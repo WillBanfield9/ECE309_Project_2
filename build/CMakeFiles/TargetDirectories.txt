@@ -1,0 +1,4 @@
+/mnt/c/Users/willm/NCSU/Fall 2026/ECE309/ece309_harness/project 2/build/CMakeFiles/miniharness.dir
+/mnt/c/Users/willm/NCSU/Fall 2026/ECE309/ece309_harness/project 2/build/CMakeFiles/test_p2.dir
+/mnt/c/Users/willm/NCSU/Fall 2026/ECE309/ece309_harness/project 2/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/willm/NCSU/Fall 2026/ECE309/ece309_harness/project 2/build/CMakeFiles/rebuild_cache.dir
