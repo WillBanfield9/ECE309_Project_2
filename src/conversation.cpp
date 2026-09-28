@@ -73,6 +73,7 @@
             for(std::size_t i = 0; i<size_; i++){
                 newData_[i] = data_[i];
             }
+            delete[] data_;
             capacity_ = new_capacity;
             data_ = newData_;
             data_[size_] = m;
@@ -83,6 +84,11 @@
     // Number of messages currently stored.
     std::size_t Conversation::size() const noexcept{
         return size_;
+    }
+
+        // Number of messages possible to store without growing array
+    std::size_t Conversation::capacity() const noexcept{
+        return capacity_;
     }
 
     // Bounds-checked access. Decide what happens on i >= size() (throw,

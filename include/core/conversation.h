@@ -30,6 +30,8 @@ public:
     // Number of messages currently stored.
     std::size_t size() const noexcept;
 
+    std::size_t capacity() const noexcept;
+
     // Bounds-checked access. Decide what happens on i >= size() (throw,
     // assert, whatever you pick) and test that behavior explicitly.
     const Message& at(std::size_t i) const;

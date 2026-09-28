@@ -32,6 +32,10 @@
         }
         return safeString;  //output the struct with safe words and if the sentinel has been seen yet or not
     }
+       
+    std::size_t SentinelScanner::pendingSize(){
+        return pending_.size();
+    }
 
     // Call once, after the stream ends, to release any text still
     // being held back.
