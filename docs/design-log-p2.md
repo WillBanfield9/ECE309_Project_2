@@ -2,16 +2,19 @@
 
 (500–800 words total. See spec §5 for what each section must cover.)
 
+
 ## Growth factor and amortized cost
 
-
+For the growth factor, I chose 2 partially because it was taught this way in Zybooks, but also because it is a reasonable choice for this project. Because there can be any size of input text, it does not make sense to go for a huge growth factor, such as 10, because if the message is short, then this is wasted memory allocation. On the other hand, if the input message is very long, it does not make sense to use a small growth factor, such as 1.5, because it will require more frequent memory allocation. For especially long messages, a small growth factor could be one of the primary weaknesses of the harness. To prove that the insertions have an amortized cost of O(1), first consider that when there are 0 messages, an append to the array causes an allocation of one address (by design). Now for the sake of induction, consider an array of k elements, where k>=1 and the average cost of appending up to the point of this array size has been O(1). When a new append is called and we reallocate an array, k elements of the array have to be transfered. However, this allows the subsequent k appends to simply append into the newly allocated array, thus not requiring any reallocation. Then after the k new appends, once another append is requested, there must be reallocation of 2k elements (the original k elements, plus the k newly allocated elements) into an array. Yet, again this allows a further 2k appends without need for allocation. By induction, this shows that on average, there are 2k/2k reallocations per append. This means that for all n, the average or amortized cost is O(1).
 
 ## Rule of Five evidence
 
-
+The rule of five is handled in the Conversation class, evidenced by the existence of all five of: destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. The assignment operators are handled safely by ensuring to delete the previous data of the thing being written to, to avoid leaks. Likewise the move constructor and move assignment operator are handeld safely by ensuring to remove the data from the conversation that is being copied.
 
 ## Sentinel scanner: bounded pending_ proof
 
-
+The way that I have designed the pending buffer and the feed function works as follows. Let n be the the size of the sentinel. Let k be the size of pending, and let m be the size of the chunk being checked. The size of the combined pending buffer and the new chunk is k+m. If k+m < n, then the entire combination is saved as the next pending, and therefore is bounded from above by the size of the sentinel. If instead k+m >= n, then if the sentinel is not included, then the first k+m-n+1 characters must be safe to removed. This means that the new pending size would be k+m - (k+m-n+1) = n-1. Clearly n-1 < n. So this case also has a bounded pending buffer. Therefore since both cases are bounded, the pending buffer is always bounded by the size of the sentinel.
 
 ## What I would change differently
+
+One thing I would do differently has to do with my process rather than my code. When I began, I wrote all of the classes with all of their functions, before ever building or running the code. I did this because I was unfamiliar with git and was unaccustomed to using the commands in the terminal. However, because of this, once I finally finished writing all of the functions and actually did run it, there were so many errors. Not only were there so many, but there were duplicate errors all over my code. If I had simply taken the time to figure out how to use the git commands first, I could have been buillding and running my code as I wrote it, discovered my misconceptions, and fixed them instead of repeating them over and over in other places throughout my code.
